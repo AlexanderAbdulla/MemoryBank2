@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75EFC3324CF5AA8C8FBB5B1B /* Pods_MemoryBank2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31753D53D28FA27DA936BFA /* Pods_MemoryBank2.framework */; };
 		F215C7752193F15300303752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215C7742193F15300303752 /* AppDelegate.swift */; };
 		F215C7772193F15300303752 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215C7762193F15300303752 /* FirstViewController.swift */; };
 		F215C7792193F15300303752 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215C7782193F15300303752 /* SecondViewController.swift */; };
 		F215C77C2193F15300303752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F215C77A2193F15300303752 /* Main.storyboard */; };
 		F215C77E2193F15400303752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F215C77D2193F15400303752 /* Assets.xcassets */; };
 		F215C7812193F15400303752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F215C77F2193F15400303752 /* LaunchScreen.storyboard */; };
+		F215C7892193F27200303752 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215C7882193F27200303752 /* LoginViewController.swift */; };
+		F215C78B2193F9DE00303752 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F215C78A2193F9DE00303752 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FA4F4F5438C87AF063A0212 /* Pods-MemoryBank2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryBank2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryBank2/Pods-MemoryBank2.debug.xcconfig"; sourceTree = "<group>"; };
+		D7B340CE944675AF75D8134A /* Pods-MemoryBank2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryBank2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryBank2/Pods-MemoryBank2.release.xcconfig"; sourceTree = "<group>"; };
 		F215C7712193F15300303752 /* MemoryBank2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryBank2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F215C7742193F15300303752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F215C7762193F15300303752 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		F215C77D2193F15400303752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F215C7802193F15400303752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F215C7822193F15400303752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F215C7882193F27200303752 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F215C78A2193F9DE00303752 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F31753D53D28FA27DA936BFA /* Pods_MemoryBank2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryBank2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75EFC3324CF5AA8C8FBB5B1B /* Pods_MemoryBank2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A35CA79EEB7EBD8FBCE42FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F31753D53D28FA27DA936BFA /* Pods_MemoryBank2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB682711F16B7779AFAC8A25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1FA4F4F5438C87AF063A0212 /* Pods-MemoryBank2.debug.xcconfig */,
+				D7B340CE944675AF75D8134A /* Pods-MemoryBank2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F215C7682193F15300303752 = {
 			isa = PBXGroup;
 			children = (
 				F215C7732193F15300303752 /* MemoryBank2 */,
 				F215C7722193F15300303752 /* Products */,
+				EB682711F16B7779AFAC8A25 /* Pods */,
+				4A35CA79EEB7EBD8FBCE42FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +84,7 @@
 		F215C7732193F15300303752 /* MemoryBank2 */ = {
 			isa = PBXGroup;
 			children = (
+				F215C78A2193F9DE00303752 /* GoogleService-Info.plist */,
 				F215C7742193F15300303752 /* AppDelegate.swift */,
 				F215C7762193F15300303752 /* FirstViewController.swift */,
 				F215C7782193F15300303752 /* SecondViewController.swift */,
@@ -63,6 +92,7 @@
 				F215C77D2193F15400303752 /* Assets.xcassets */,
 				F215C77F2193F15400303752 /* LaunchScreen.storyboard */,
 				F215C7822193F15400303752 /* Info.plist */,
+				F215C7882193F27200303752 /* LoginViewController.swift */,
 			);
 			path = MemoryBank2;
 			sourceTree = "<group>";
@@ -74,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F215C7852193F15400303752 /* Build configuration list for PBXNativeTarget "MemoryBank2" */;
 			buildPhases = (
+				9C280606FEA05A073691050B /* [CP] Check Pods Manifest.lock */,
 				F215C76D2193F15300303752 /* Sources */,
 				F215C76E2193F15300303752 /* Frameworks */,
 				F215C76F2193F15300303752 /* Resources */,
+				95C2E72A8812A30895339820 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F215C7812193F15400303752 /* LaunchScreen.storyboard in Resources */,
+				F215C78B2193F9DE00303752 /* GoogleService-Info.plist in Resources */,
 				F215C77E2193F15400303752 /* Assets.xcassets in Resources */,
 				F215C77C2193F15300303752 /* Main.storyboard in Resources */,
 			);
@@ -133,11 +166,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		95C2E72A8812A30895339820 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MemoryBank2/Pods-MemoryBank2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MemoryBank2/Pods-MemoryBank2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C280606FEA05A073691050B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MemoryBank2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F215C76D2193F15300303752 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F215C7892193F27200303752 /* LoginViewController.swift in Sources */,
 				F215C7792193F15300303752 /* SecondViewController.swift in Sources */,
 				F215C7752193F15300303752 /* AppDelegate.swift in Sources */,
 				F215C7772193F15300303752 /* FirstViewController.swift in Sources */,
@@ -284,6 +371,7 @@
 		};
 		F215C7862193F15400303752 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA4F4F5438C87AF063A0212 /* Pods-MemoryBank2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +390,7 @@
 		};
 		F215C7872193F15400303752 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7B340CE944675AF75D8134A /* Pods-MemoryBank2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
