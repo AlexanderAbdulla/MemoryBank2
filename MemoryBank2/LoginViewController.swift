@@ -15,18 +15,29 @@ class LoginViewController: UIViewController {
   var ref: DatabaseReference!
 
     @IBAction func LogIn(_ sender: Any) {
-        ref = Database.database().reference();      ref.child("stats").setValue(["clicks": 5])
+        ref = Database.database().reference();   ref.child("stats").setValue(["clicks": 5])
         
           // ...
-        Auth.auth().createUser(withEmail: "a@a.com", password: "aaaaaa")
-
-        //performSegue(withIdentifier: "LoginSegue", sender: self)
-        
+        Auth.auth().createUser(withEmail: "a@a.com", password: "aaaaaa") { (user, error) in
+            
+            if error != nil {
+                
+                print("firebase auth ", error.debugDescription)
+                
+                
+            } else {
+                print("all good... continue")
+                self.changeView()
+            }
+        }
     }
+    
+    func changeView(){
+        performSegue(withIdentifier: "LoginSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
        super.viewDidLoad()
-        
-        
         
     }
     
