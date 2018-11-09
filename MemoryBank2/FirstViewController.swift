@@ -14,6 +14,10 @@ class FirstViewController: UIViewController {
 
     @IBOutlet weak var userLabel: UITextField!
     
+    @IBAction func logOut(_ sender: Any) {
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("user is", Auth.auth().currentUser?.email)
