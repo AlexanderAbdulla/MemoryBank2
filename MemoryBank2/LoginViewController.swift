@@ -14,23 +14,57 @@ class LoginViewController: UIViewController {
     
   var ref: DatabaseReference!
 
+    @IBOutlet weak var usernameField: UITextField!
+    
+    @IBOutlet weak var passwordField: UITextField!
+    
+    @IBOutlet weak var errorText: UITextField!
+    
+    
     @IBAction func LogIn(_ sender: Any) {
+        var usernameText = usernameField.text
+        
+        var passwordText = passwordField.text
+        
+        Auth.auth().signIn(withEmail: usernameText!, password: passwordText!) { (user, error) in
+            
+            if error != nil {
+                print("firebase auth ", error.debugDescription);
+                self.errorText.text = error?.localizedDescription
+            } else {
+                print("all good...continue")
+                self.changeView()
+                
+            }
+        
+        }
+    }
+    
+    @IBAction func SingUp(_ sender: Any) {
         ref = Database.database().reference();   ref.child("stats").setValue(["clicks": 5])
         
-          // ...
-        Auth.auth().createUser(withEmail: "a@a.com", password: "aaaaaa") { (user, error) in
+        
+        var usernameText = usernameField.text
+        
+        var passwordText = passwordField.text
+        
+        // ...
+        Auth.auth().createUser(withEmail: usernameText!, password: passwordText!) { (user, error) in
             
             if error != nil {
                 
                 print("firebase auth ", error.debugDescription)
-                
+                self.errorText.text = error?.localizedDescription                //self.changeView()
                 
             } else {
                 print("all good... continue")
                 self.changeView()
             }
         }
+        
     }
+    
+    
     
     func changeView(){
         performSegue(withIdentifier: "LoginSegue", sender: self)

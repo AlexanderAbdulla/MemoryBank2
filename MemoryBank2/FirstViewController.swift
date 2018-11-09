@@ -12,8 +12,12 @@ import Firebase
 
 class FirstViewController: UIViewController {
 
+    @IBOutlet weak var userLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("user is", Auth.auth().currentUser?.email)
+        userLabel.text = "USER" + (Auth.auth().currentUser?.email)!
         
         // Do any additional setup after loading the view, typically from a nib.
     }
