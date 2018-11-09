@@ -15,7 +15,13 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var userLabel: UITextField!
     
     @IBAction func logOut(_ sender: Any) {
-    
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+        } catch let err {
+            print(err)
+        }
+        
     }
     
     override func viewDidLoad() {
