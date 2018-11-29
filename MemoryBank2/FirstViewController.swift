@@ -20,9 +20,22 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tabelView: UITableView!
     
+    @IBOutlet weak var categoryText: UITextField!
+    
+    
     var ref:DatabaseReference?
     var postData = [String]()
+    var selectedTitle = "none selected";
     
+    @IBAction func addCategory(_ sender: Any) {
+        var categoryName = categoryText.text
+        
+        
+        
+        self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).childByAutoId().setValue(categoryName)
+     
+        
+    }
     @IBAction func logOut(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -34,6 +47,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBOutlet var tableView: [UITableView]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("user is", Auth.auth().currentUser?.email)
@@ -47,8 +61,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //set firebase ref
         ref = Database.database().reference()
         
+        let nodeString = "users/" + (Auth.auth().currentUser?.uid)! + "/categories";
+        
+        
+        
+        
         //retreive posts and listen.
-        ref?.child("posts").observe(.childAdded, with: {
+        ref?.child(nodeString).observe(.childAdded, with: {
                 (snapshot) in
             let post = snapshot.value as? String
             
@@ -73,7 +92,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return(cell)
         
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let recieverVC = segue.destination as! SecondViewController;
+        
+        recieverVC.detailTitle = selectedTitle;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(postData[indexPath.row])
+        selectedTitle = postData[indexPath.row]
+        performSegue(withIdentifier: "DetailsSegue", sender: self)    }
 
 }
 

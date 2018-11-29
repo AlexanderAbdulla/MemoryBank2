@@ -57,6 +57,7 @@ class LoginViewController: UIViewController {
                 self.errorText.text = error?.localizedDescription                //self.changeView()
                 
             } else {
+                self.ref.child("users").child(Auth.auth().currentUser!.uid + "/categories/categoryOne").setValue("Random")
                 print("all good... continue")
                 self.changeView()
             }

@@ -9,9 +9,15 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-
+    
+    @IBOutlet weak var DetailsTitle: UILabel!
+    
+    var detailTitle = "";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DetailsTitle.text = detailTitle
         // Do any additional setup after loading the view, typically from a nib.
     }
 
