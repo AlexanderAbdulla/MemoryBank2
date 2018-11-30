@@ -12,12 +12,17 @@ class SecondViewController: UIViewController {
     
     @IBOutlet weak var DetailsTitle: UILabel!
     
+    @IBAction func backButton(_ sender: Any) {
+     //performSegue(withIdentifier: "categoriesSegue", sender: self)
+        self.dismiss(animated: true, completion: nil)    }
+    
     var detailTitle = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         DetailsTitle.text = detailTitle
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

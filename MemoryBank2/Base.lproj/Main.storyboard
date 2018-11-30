@@ -71,6 +71,15 @@
                                     <action selector="logOut:" destination="9pv-A4-QxB" eventType="touchUpInside" id="aeB-4z-tot"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGl-M6-kKY">
+                                <rect key="frame" x="78" y="577" width="62" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteCategory:" destination="9pv-A4-QxB" eventType="touchUpInside" id="fZx-Ub-Dmv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -81,11 +90,12 @@
                         <outlet property="tabelView" destination="KWR-hB-0uT" id="qHT-7m-7Dt"/>
                         <outlet property="userLabel" destination="PCN-8G-e66" id="ONd-HA-tor"/>
                         <outletCollection property="tableView" destination="KWR-hB-0uT" collectionClass="NSMutableArray" id="4CR-qU-dqC"/>
+                        <segue destination="vsA-BM-MHF" kind="presentation" identifier="LoginSegue" id="Uk6-kj-6sK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="682" y="-242"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -108,11 +118,22 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33U-A9-vjP">
+                                <rect key="frame" x="159" y="443" width="57" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="BACK"/>
+                                <connections>
+                                    <action selector="backButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Tbr-dW-Y6G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="33U-A9-vjP" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="88" id="6Cx-O3-w0H"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="33U-A9-vjP" secondAttribute="trailing" constant="159" id="Qiw-DP-MuR"/>
+                            <constraint firstItem="33U-A9-vjP" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="159" id="Riq-WO-B7G"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
@@ -121,11 +142,12 @@
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="DetailsTitle" destination="zEq-FU-wV5" id="CNn-qq-mHg"/>
+                        <segue destination="9pv-A4-QxB" kind="presentation" identifier="categoriesSegue" id="oi7-gh-ykC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="764" y="481"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ml2-F4-mWR">
@@ -247,6 +269,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lzU-1b-eKA"/>
+        <segue reference="Ib4-LN-bKY"/>
+        <segue reference="oi7-gh-ykC"/>
     </inferredMetricsTieBreakers>
 </document>

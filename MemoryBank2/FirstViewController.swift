@@ -25,7 +25,36 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var ref:DatabaseReference?
     var postData = [String]()
+    var postKeys = [String]()
+    var selectedIndex = 0;
     var selectedTitle = "none selected";
+    
+    @IBAction func deleteCategory(_ sender: Any) {
+       
+        let nodeString = "users/" + (Auth.auth().currentUser?.uid)! + "/categories";
+        
+        ref?.child(nodeString).observe(.childAdded, with: {
+            (snapshot) in
+            let post = snapshot.value as? String
+            
+            if let actualPost = post {
+                if (self.selectedTitle == actualPost){
+                    snapshot.ref.removeValue();
+                }
+            }
+            
+           // print(self.postData)
+           
+        }
+        )
+        
+        self.viewDidLoad()
+        
+       // postData.removeAll();
+        //tabelView.reloadData()
+        
+
+    }
     
     @IBAction func addCategory(_ sender: Any) {
         var categoryName = categoryText.text
@@ -36,10 +65,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
      
         
     }
+    
     @IBAction func logOut(_ sender: Any) {
         do {
             try Auth.auth().signOut()
             self.dismiss(animated: true, completion: nil)
+            //TODO instead of dismiss perform a segue here
+            //performSegue(withIdentifier: "LoginSegue", sender: self)
+            
         } catch let err {
             print(err)
         }
@@ -53,8 +86,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("user is", Auth.auth().currentUser?.email)
         userLabel.text = "USER" + (Auth.auth().currentUser?.email)!
         
-        
-        
+      
 
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -63,8 +95,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let nodeString = "users/" + (Auth.auth().currentUser?.uid)! + "/categories";
         
-        
-        
+        postData.removeAll()
         
         //retreive posts and listen.
         ref?.child(nodeString).observe(.childAdded, with: {
@@ -78,6 +109,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             print(self.postData)
         })
+        
+        
         
     }
     
@@ -101,8 +134,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(postData[indexPath.row])
+        
+        if(selectedTitle == postData[indexPath.row]){
+             performSegue(withIdentifier: "DetailsSegue", sender: self)
+            
+        }
+        
         selectedTitle = postData[indexPath.row]
-        performSegue(withIdentifier: "DetailsSegue", sender: self)    }
+        
+        
+    }
 
 }
 
