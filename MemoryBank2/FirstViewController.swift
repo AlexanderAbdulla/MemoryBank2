@@ -82,6 +82,36 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    @IBAction func editCategory(_ sender: Any) {
+        
+        
+        print("in edit fx")
+        
+        let nodeString = "users/" + (Auth.auth().currentUser?.uid)! + "/categories";
+        
+        ref?.child(nodeString).observe(.childAdded, with: {
+            (snapshot) in
+            let post = snapshot.value as? String
+            
+            if let actualPost = post {
+                if (self.selectedTitle == actualPost){
+                    snapshot.ref.setValue(self.categoryText.text)
+                    for i in 0..<(self.postData.count) {
+                        if(self.postData[i] == self.selectedTitle){
+                            self.postData[i] = self.categoryText.text!;
+                            self.tabelView.reloadData()
+                        }
+                    }
+                }
+            }
+            
+            // print(self.postData)
+            
+        }
+        
+        )
+    }
+    
     @IBOutlet var tableView: [UITableView]!
     
     override func viewDidLoad() {

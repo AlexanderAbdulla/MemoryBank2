@@ -63,7 +63,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Zf-hy-HaL">
-                                <rect key="frame" x="160" y="579" width="67" height="39"/>
+                                <rect key="frame" x="177" y="577" width="67" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Logout"/>
@@ -78,6 +78,15 @@
                                 <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="deleteCategory:" destination="9pv-A4-QxB" eventType="touchUpInside" id="fZx-Ub-Dmv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDc-xn-vVX">
+                                <rect key="frame" x="263" y="577" width="50" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editCategory:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Wlh-C5-P7u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -95,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="682" y="-242"/>
+            <point key="canvasLocation" x="680.79999999999995" y="-242.42878560719643"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
