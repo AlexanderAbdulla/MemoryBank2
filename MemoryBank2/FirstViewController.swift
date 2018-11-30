@@ -48,7 +48,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         )
         
-        self.viewDidLoad()
+        
+        postData.removeAll { $0 == selectedTitle}
+        tabelView.reloadData()
+        //self.viewDidLoad()
         
        // postData.removeAll();
         //tabelView.reloadData()
