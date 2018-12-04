@@ -9,19 +9,29 @@
 import UIKit
 import FirebaseCore
 import Firebase
+import Speech
+import Accelerate
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
 
     
-
+    @IBOutlet weak var voiceStartBtn: UIButton!
+    
     @IBOutlet weak var userLabel: UITextField!
     
     @IBOutlet weak var tabelView: UITableView!
     
     @IBOutlet weak var categoryText: UITextField!
     
+    let audioEngine = AVAudioEngine()
+    
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    
+    var recognitionTask: SFSpeechRecognitionTask?
     
     var ref:DatabaseReference?
     var postData = [String]()
@@ -29,6 +39,82 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var selectedIndex = 0;
     var selectedTitle = "none selected";
     
+    @IBAction func voiceStart(_ sender: Any) {
+        print("we are in the mothafuckin button yo")
+        self.recordAndRecognizeSpeech()
+        
+    }
+    
+    func recordAndRecognizeSpeech(){
+        
+        self.voiceStartBtn.isEnabled = false
+        
+        // this syntax differs slightly as i cant seem to use the else/ gaurd
+        let node = audioEngine.inputNode;
+        
+        print("we made a node")
+        
+        let recordingFormat = node.outputFormat(forBus: 0)
+        
+        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) {buffer, _ in self.request.append(buffer)}
+        
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            print("audio engine didnt work")
+            return print(error)
+        }
+        
+        guard let myRecognizer = SFSpeechRecognizer() else {
+            print("sf speech recognizer didnt work")
+            return
+        }
+        
+        if !myRecognizer.isAvailable {
+            print("available didnt work")
+            return
+        }
+        
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
+            if let result = result{
+                
+                var bestString = result.bestTranscription.formattedString
+                
+                var lastString: String = ""
+                
+                for segment in result.bestTranscription.segments {
+                    let indexTo = bestString.index(bestString.startIndex, offsetBy: segment.substringRange.location)
+                    lastString = bestString.substring(from: indexTo)
+                }
+                
+               // self.checkForColorsSaid(resultString: lastString)
+                
+                if(lastString.lowercased() == "finish"){
+                    self.categoryText.text = "NO INPUT BEING RECIEVED"
+                    self.recognitionTask?.cancel();
+                    self.audioEngine.inputNode.removeTap(onBus: 0)
+                    self.voiceStartBtn.isEnabled = true
+                    //self.colorDisplay.backgroundColor =  UIColor.white
+                    //var image: UIImage? = nil
+                    //self.darcyView.image = image
+                    return;
+                    
+                    
+                } else {
+                    self.categoryText.text = lastString
+                }
+                
+                
+            }else if let error = error{
+                print("the speech is not detected")
+                print(error)
+            }
+            
+        })
+        
+    }
     @IBAction func deleteCategory(_ sender: Any) {
        
         let nodeString = "users/" + (Auth.auth().currentUser?.uid)! + "/categories";

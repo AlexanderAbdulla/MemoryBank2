@@ -89,6 +89,14 @@
                                     <action selector="editCategory:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Wlh-C5-P7u"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dA6-jN-mnt">
+                                <rect key="frame" x="180" y="624" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="VOICE"/>
+                                <connections>
+                                    <action selector="voiceStart:" destination="9pv-A4-QxB" eventType="touchUpInside" id="HQV-fQ-Fe9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -98,6 +106,7 @@
                         <outlet property="categoryText" destination="Xpu-Jb-Wnh" id="4xf-iB-MdS"/>
                         <outlet property="tabelView" destination="KWR-hB-0uT" id="qHT-7m-7Dt"/>
                         <outlet property="userLabel" destination="PCN-8G-e66" id="ONd-HA-tor"/>
+                        <outlet property="voiceStartBtn" destination="dA6-jN-mnt" id="qK8-MZ-oou"/>
                         <outletCollection property="tableView" destination="KWR-hB-0uT" collectionClass="NSMutableArray" id="4CR-qU-dqC"/>
                         <segue destination="vsA-BM-MHF" kind="presentation" identifier="LoginSegue" id="Uk6-kj-6sK"/>
                     </connections>
