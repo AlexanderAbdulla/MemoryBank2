@@ -45,6 +45,31 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    func checkForCommandsSaid(resultString: String){
+       
+        
+        let resultString = resultString.lowercased()
+        
+        switch resultString {
+            
+        case "clear":
+            categoryText.text = ""
+        case "add":
+           // selectedTitle = categoryText.text!
+            self.addCategory(self)
+            print("in add case")
+        case "edit":
+            //selectedTitle = resultString
+            self.editCategory(self)
+        case "delete":
+            selectedTitle = categoryText.text!
+            self.deleteCategory(self)
+        //case "select"
+            
+        default: break
+        }
+    }
+    
     func recordAndRecognizeSpeech(){
         
         self.voiceStartBtn.isEnabled = false
@@ -89,10 +114,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     lastString = bestString.substring(from: indexTo)
                 }
                 
-               // self.checkForColorsSaid(resultString: lastString)
+                self.checkForCommandsSaid(resultString: lastString)
                 
                 if(lastString.lowercased() == "finish"){
-                    self.categoryText.text = "NO INPUT BEING RECIEVED"
+                    self.categoryText.text = ""
                     self.recognitionTask?.cancel();
                     self.audioEngine.inputNode.removeTap(onBus: 0)
                     self.voiceStartBtn.isEnabled = true
@@ -146,9 +171,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func addCategory(_ sender: Any) {
+        print("in add cat")
+        
         var categoryName = categoryText.text
         
-        
+        print("adding")
+        print(categoryName)
         
        // self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).childByAutoId().setValue(categoryName)
         self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child(categoryName!).setValue("EMPTY")
