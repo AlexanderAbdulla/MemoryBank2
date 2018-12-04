@@ -35,7 +35,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         ref?.child(nodeString).observe(.childAdded, with: {
             (snapshot) in
-            let post = snapshot.value as? String
+            let post = snapshot.key as? String
             
             if let actualPost = post {
                 if (self.selectedTitle == actualPost){
@@ -64,8 +64,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         
-        self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).childByAutoId().setValue(categoryName)
-     
+       // self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).childByAutoId().setValue(categoryName)
+        self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child(categoryName!).setValue("EMPTY")
         
     }
     
@@ -91,7 +91,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         ref?.child(nodeString).observe(.childAdded, with: {
             (snapshot) in
-            let post = snapshot.value as? String
+            let post = snapshot.key as? String
             
             if let actualPost = post {
                 if (self.selectedTitle == actualPost){
@@ -133,7 +133,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //retreive posts and listen.
         ref?.child(nodeString).observe(.childAdded, with: {
                 (snapshot) in
-            let post = snapshot.value as? String
+            let post = snapshot.key as? String //used to be value
             
             if let actualPost = post {
                 self.postData.append(actualPost)
