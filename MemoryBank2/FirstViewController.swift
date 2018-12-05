@@ -59,12 +59,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.addCategory(self)
             print("in add case")
         case "edit":
-            //selectedTitle = resultString
+            selectedTitle = categoryText.text!
             self.editCategory(self)
         case "delete":
             selectedTitle = categoryText.text!
             self.deleteCategory(self)
-        //case "select"
+        case "select":
+            selectedTitle = categoryText.text!
+            performSegue(withIdentifier: "DetailsSegue", sender: self)
+            //func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+            
+            
             
         default: break
         }
@@ -171,12 +176,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func addCategory(_ sender: Any) {
-        print("in add cat")
+        //print("in add cat")
         
-        var categoryName = categoryText.text
+        var categoryName = categoryText.text?.lowercased()
         
-        print("adding")
-        print(categoryName)
+        //print("adding")
+        //print(categoryName)
         
        // self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).childByAutoId().setValue(categoryName)
         self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child(categoryName!).setValue("EMPTY")
@@ -209,7 +214,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if let actualPost = post {
                 if (self.selectedTitle == actualPost){
-                    snapshot.ref.setValue(self.categoryText.text)
+                    snapshot.ref.setValue(self.categoryText.text?.lowercased())
                     for i in 0..<(self.postData.count) {
                         if(self.postData[i] == self.selectedTitle){
                             self.postData[i] = self.categoryText.text!;
