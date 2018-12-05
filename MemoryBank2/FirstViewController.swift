@@ -38,7 +38,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var postKeys = [String]()
     var selectedIndex = 0;
     var selectedTitle = "none selected";
-    
+    var voiceBtnClicked = true;
+ 
     @IBAction func voiceStart(_ sender: Any) {
         print("we are in the mothafuckin button yo")
         self.recordAndRecognizeSpeech()
@@ -77,7 +78,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func recordAndRecognizeSpeech(){
         
-        self.voiceStartBtn.isEnabled = false
+        if(voiceBtnClicked == false ) {
+            print("restarting")
+            self.recognitionTask?.cancel();
+            self.audioEngine.inputNode.removeTap(onBus: 0)
+            //self.voiceStartBtn.isEnabled = true
+            voiceBtnClicked = true
+            //recordAndRecognizeSpeech()
+        } else {
+        print("starting")
+        voiceBtnClicked = false;
         
         // this syntax differs slightly as i cant seem to use the else/ gaurd
         let node = audioEngine.inputNode;
@@ -142,7 +152,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 print(error)
             }
             
+            
+            
         })
+        
+        }
         
     }
     @IBAction func deleteCategory(_ sender: Any) {
@@ -264,6 +278,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -296,6 +311,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
     }
+    
+   
+
 
 }
 
