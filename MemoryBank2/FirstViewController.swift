@@ -41,6 +41,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var voiceBtnClicked = true;
     
     @IBAction func addCategory2(_ sender: Any) {
+        var categoryName = categoryText.text?.lowercased()
+        
+        self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child("(l)" + categoryName!).childByAutoId().setValue("empty")
         
     }
     
@@ -59,16 +62,24 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         case "clear":
             categoryText.text = ""
-        case "ap":
+        case "paragraph":
            // selectedTitle = categoryText.text!
+            if(categoryText.text == "paragraph"){
+                return
+            }
             self.addCategory(self)
             print("in add case")
-        case "edit":
-            selectedTitle = categoryText.text!
-            self.editCategory(self)
+        
         case "delete":
             selectedTitle = categoryText.text!
-            self.deleteCategory(self)
+            for post in postData {
+                if (post.range(of:selectedTitle) != nil){
+                    selectedTitle = post;
+                      self.deleteCategory(self)
+                    
+                }
+            }
+          
         case "select":
             selectedTitle = categoryText.text!
            
@@ -90,8 +101,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             //performSegue(withIdentifier: "DetailsSegue", sender: self)
             //func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-        case "al":
+        case "list":
             print("adding a list")
+            if(categoryText.text == "list"){
+                return
+            }
+            self.addCategory2(self)
             
             
             
