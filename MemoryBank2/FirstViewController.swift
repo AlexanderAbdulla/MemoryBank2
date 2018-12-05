@@ -39,7 +39,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var selectedIndex = 0;
     var selectedTitle = "none selected";
     var voiceBtnClicked = true;
- 
+    
+    @IBAction func addCategory2(_ sender: Any) {
+        
+    }
+    
     @IBAction func voiceStart(_ sender: Any) {
         print("we are in the mothafuckin button yo")
         self.recordAndRecognizeSpeech()
@@ -55,7 +59,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         case "clear":
             categoryText.text = ""
-        case "add":
+        case "ap":
            // selectedTitle = categoryText.text!
             self.addCategory(self)
             print("in add case")
@@ -67,8 +71,27 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.deleteCategory(self)
         case "select":
             selectedTitle = categoryText.text!
-            performSegue(withIdentifier: "DetailsSegue", sender: self)
+           
+            
+            for post in postData{
+                if post.range(of:selectedTitle) != nil {
+                    print("found")
+                    print(post)
+                    
+                    if(post.prefix(3) == "(p)"){
+                        performSegue(withIdentifier: "DetailsSegue", sender: self)
+                        
+                    } else {
+                        print("not a p")
+                    }
+                }
+            }
+           // print(identifier)
+            
+            //performSegue(withIdentifier: "DetailsSegue", sender: self)
             //func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+        case "al":
+            print("adding a list")
             
             
             
@@ -189,16 +212,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
     
+    //Adds a Paragraph Category
     @IBAction func addCategory(_ sender: Any) {
         //print("in add cat")
         
         var categoryName = categoryText.text?.lowercased()
         
-        //print("adding")
-        //print(categoryName)
-        
-       // self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).childByAutoId().setValue(categoryName)
-        self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child(categoryName!).setValue("EMPTY")
+         self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child("(p)" + categoryName!).child("p").setValue("empty")
         
     }
     
