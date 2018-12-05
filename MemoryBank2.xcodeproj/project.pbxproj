@@ -16,6 +16,7 @@
 		F215C7812193F15400303752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F215C77F2193F15400303752 /* LaunchScreen.storyboard */; };
 		F215C7892193F27200303752 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215C7882193F27200303752 /* LoginViewController.swift */; };
 		F215C78B2193F9DE00303752 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F215C78A2193F9DE00303752 /* GoogleService-Info.plist */; };
+		F274642221B847CE00927E1B /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274642121B847CE00927E1B /* ThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		F215C7822193F15400303752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F215C7882193F27200303752 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F215C78A2193F9DE00303752 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F274642121B847CE00927E1B /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		F31753D53D28FA27DA936BFA /* Pods_MemoryBank2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryBank2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 				F215C77F2193F15400303752 /* LaunchScreen.storyboard */,
 				F215C7822193F15400303752 /* Info.plist */,
 				F215C7882193F27200303752 /* LoginViewController.swift */,
+				F274642121B847CE00927E1B /* ThirdViewController.swift */,
 			);
 			path = MemoryBank2;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			files = (
 				F215C7892193F27200303752 /* LoginViewController.swift in Sources */,
 				F215C7792193F15300303752 /* SecondViewController.swift in Sources */,
+				F274642221B847CE00927E1B /* ThirdViewController.swift in Sources */,
 				F215C7752193F15300303752 /* AppDelegate.swift in Sources */,
 				F215C7772193F15300303752 /* FirstViewController.swift in Sources */,
 			);

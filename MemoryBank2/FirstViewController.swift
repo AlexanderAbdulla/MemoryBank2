@@ -94,6 +94,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                     } else {
                         print("not a p")
+                        performSegue(withIdentifier: "DetailsSegue2", sender: self)
                     }
                 }
             }
@@ -329,9 +330,24 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let recieverVC = segue.destination as! SecondViewController;
         
-        recieverVC.detailTitle = selectedTitle;
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "DetailsSegue":
+                let recieverVC = segue.destination as! SecondViewController;
+                recieverVC.detailTitle = selectedTitle;
+            case "DetailsSegue2":
+                let recieverVC = segue.destination as! ThirdViewController;
+                recieverVC.detailTitle = selectedTitle;
+            default:
+                print("nothing happening in segue")
+                
+            }
+        }
+        
+        //let recieverVC = segue.destination as! SecondViewController;
+        
+        //recieverVC.detailTitle = selectedTitle;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
