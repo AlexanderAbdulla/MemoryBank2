@@ -257,30 +257,12 @@
                         <outlet property="errorText" destination="9Ve-Sm-Odv" id="FAy-Zc-jO0"/>
                         <outlet property="passwordField" destination="ygR-Qh-VqW" id="TyB-oT-aOR"/>
                         <outlet property="usernameField" destination="4Rv-F5-dsn" id="L1P-Mv-giM"/>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="LoginSegue" id="678-Ea-rcl"/>
+                        <segue destination="9pv-A4-QxB" kind="presentation" identifier="LoginSegue" id="QiW-0K-q6T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HII-tw-SeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-879.20000000000005" y="-18.440779610194905"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                    </connections>
-                </tabBarController>
-            </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
     <resources>
@@ -288,7 +270,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lzU-1b-eKA"/>
-        <segue reference="oi7-gh-ykC"/>
+        <segue reference="QiW-0K-q6T"/>
     </inferredMetricsTieBreakers>
 </document>
