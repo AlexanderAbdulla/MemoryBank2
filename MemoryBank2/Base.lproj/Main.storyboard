@@ -178,6 +178,7 @@
                     </view>
                     <connections>
                         <outlet property="DetailsTitle" destination="bzd-iN-EKm" id="379-eM-fma"/>
+                        <outlet property="tabelView" destination="r0Q-wC-F4Y" id="DNb-hi-Ieh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHr-dS-GY8" userLabel="First Responder" sceneMemberID="firstResponder"/>

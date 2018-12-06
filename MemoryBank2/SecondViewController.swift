@@ -15,7 +15,7 @@ import Accelerate
 class SecondViewController: UIViewController {
     
     let audioEngine = AVAudioEngine()
-    
+    var stringCopyChecker = ""
     @IBOutlet weak var errorDiv: UITextField!
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
     
@@ -35,14 +35,30 @@ class SecondViewController: UIViewController {
     
     var voiceBtnClicked = true
     
-    func checkForCommandsSaid(resultString: String){
+    func checkForCommandsSaid(resultString: String)-> Bool{
         
         
         let resultString = resultString.lowercased()
         
         if(resultString == "back"){
             self.backButton(self)
+            return false
         }
+        
+        if(resultString == "clear"){
+            self.DetailsContextLarger.text = ""
+            self.errorDiv.text = "Cleared!"
+            return false
+        }
+        
+       // self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child("(l)" + categoryName!).childByAutoId().setValue("empty")
+        if(resultString == "save"){
+            self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child(detailTitle).child("p").setValue(DetailsContextLarger.text)
+            self.errorDiv.text = "Saved!"
+            return false
+        }
+        
+        return true
      
     }
     
@@ -101,22 +117,27 @@ class SecondViewController: UIViewController {
                         lastString = bestString.substring(from: indexTo)
                     }
                     
-                    self.checkForCommandsSaid(resultString: lastString)
+                    if(self.checkForCommandsSaid(resultString: lastString)){
                     
                     if(lastString.lowercased() == "finish"){
                         self.categoryText.text = ""
                         self.recognitionTask?.cancel();
                         self.audioEngine.inputNode.removeTap(onBus: 0)
                         self.voiceStartBtn.isEnabled = true
-                        //self.colorDisplay.backgroundColor =  UIColor.white
-                        //var image: UIImage? = nil
-                        //self.darcyView.image = image
                         self.errorDiv.text = "Cancelled Voice Recording"
                         return;
                         
                         
                     } else {
-                        self.categoryText.text = lastString
+                        
+                        if self.stringCopyChecker.range(of:lastString) != nil {
+                            
+                        }else {
+                            self.categoryText.text =  lastString
+                            self.stringCopyChecker = lastString;
+                            self.DetailsContextLarger.text = self.DetailsContextLarger.text + " " + lastString
+                        }
+                    }
                     }
                     
                     
