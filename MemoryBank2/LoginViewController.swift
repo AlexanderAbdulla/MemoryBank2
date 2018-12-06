@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
         
         var passwordText = passwordField.text
         
+        
+        
         Auth.auth().signIn(withEmail: usernameText!, password: passwordText!) { (user, error) in
             
             if error != nil {
@@ -73,7 +75,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
        super.viewDidLoad()
-        
+        //self.passwordField.isSecureTextEntry = true;
     }
     
 

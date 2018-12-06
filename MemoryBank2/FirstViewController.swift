@@ -25,6 +25,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var categoryText: UITextField!
     
+    @IBOutlet weak var errorDiv: UITextField!
     let audioEngine = AVAudioEngine()
     
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
@@ -41,15 +42,26 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var voiceBtnClicked = true;
     
     @IBAction func addCategory2(_ sender: Any) {
+        
+        
         var categoryName = categoryText.text?.lowercased()
         
+        for post in postData{
+            if post.range(of:categoryName!) != nil {
+                self.errorDiv.text = "This category exits already!!"
+                return;
+            }
+        }
         self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child("(l)" + categoryName!).childByAutoId().setValue("empty")
+        
+        self.errorDiv.text = categoryName! + " was added"
         
     }
     
     @IBAction func voiceStart(_ sender: Any) {
         print("we are in the mothafuckin button yo")
         self.recordAndRecognizeSpeech()
+        
         
     }
     
@@ -71,7 +83,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print("in add case")
         
         case "delete":
-            selectedTitle = categoryText.text!
+            selectedTitle = categoryText.text!.lowercased()
             for post in postData {
                 if (post.range(of:selectedTitle) != nil){
                     selectedTitle = post;
@@ -81,14 +93,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
           
         case "select":
-            selectedTitle = categoryText.text!
+            selectedTitle = (categoryText.text?.lowercased())!
            
             
             for post in postData{
                 if post.range(of:selectedTitle) != nil {
                     print("found")
                     print(post)
-                    
+                    selectedTitle = post;
                     if(post.prefix(3) == "(p)"){
                         performSegue(withIdentifier: "DetailsSegue", sender: self)
                         
@@ -123,9 +135,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.audioEngine.inputNode.removeTap(onBus: 0)
             //self.voiceStartBtn.isEnabled = true
             voiceBtnClicked = true
+            self.errorDiv.text = "Click Voice One More Time!"
             //recordAndRecognizeSpeech()
         } else {
         print("starting")
+        self.errorDiv.text = "Voice Recording On!";
         voiceBtnClicked = false;
         
         // this syntax differs slightly as i cant seem to use the else/ gaurd
@@ -178,6 +192,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     //self.colorDisplay.backgroundColor =  UIColor.white
                     //var image: UIImage? = nil
                     //self.darcyView.image = image
+                    self.errorDiv.text = "Cancelled Voice Recording"
                     return;
                     
                     
@@ -200,6 +215,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     @IBAction func deleteCategory(_ sender: Any) {
        
+       
+        
         let nodeString = "users/" + (Auth.auth().currentUser?.uid)! + "/categories";
         
         ref?.child(nodeString).observe(.childAdded, with: {
@@ -209,6 +226,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let actualPost = post {
                 if (self.selectedTitle == actualPost){
                     snapshot.ref.removeValue();
+                    self.errorDiv.text = post! + " was deleted"
                 }
             }
             
@@ -220,21 +238,27 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         postData.removeAll { $0 == selectedTitle}
         tabelView.reloadData()
-        //self.viewDidLoad()
         
-       // postData.removeAll();
-        //tabelView.reloadData()
         
 
     }
     
     //Adds a Paragraph Category
     @IBAction func addCategory(_ sender: Any) {
-        //print("in add cat")
         
         var categoryName = categoryText.text?.lowercased()
         
+        for post in postData{
+            if post.range(of:categoryName!) != nil {
+                self.errorDiv.text = "This category exits already!!"
+                return;
+            }
+        }
+        
+        
          self.ref!.child("users/" + Auth.auth().currentUser!.uid + "/categories" ).child("(p)" + categoryName!).child("p").setValue("empty")
+        
+        self.errorDiv.text = categoryName! + " was added"
         
     }
     
@@ -353,8 +377,22 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(postData[indexPath.row])
         
+
+        
+        
         if(selectedTitle == postData[indexPath.row]){
-             performSegue(withIdentifier: "DetailsSegue", sender: self)
+            if(selectedTitle.prefix(3) == "(p)"){
+                
+                self.errorDiv.text = "Restart Voice!"
+                
+                performSegue(withIdentifier: "DetailsSegue", sender: self)
+                
+            } else {
+                
+                self.errorDiv.text = "Restart Voice!"
+                
+                performSegue(withIdentifier: "DetailsSegue2", sender: self)            }
+            
             
         }
         

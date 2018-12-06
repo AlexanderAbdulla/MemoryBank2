@@ -14,11 +14,124 @@ import Accelerate
 
 class SecondViewController: UIViewController {
     
+    let audioEngine = AVAudioEngine()
+    
+    @IBOutlet weak var errorDiv: UITextField!
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    
+    @IBOutlet weak var voiceStartBtn: UIButton!
+    @IBOutlet weak var categoryText: UITextField!
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    
+    var recognitionTask: SFSpeechRecognitionTask?
     var ref:DatabaseReference?
     @IBOutlet weak var DetailsTitle: UILabel!
     
     
+    @IBAction func startVoice(_ sender: Any) {
+        recordAndRecognizeSpeech()
+    }
     @IBOutlet weak var DetailsContextLarger: UITextView!
+    
+    var voiceBtnClicked = true
+    
+    func checkForCommandsSaid(resultString: String){
+        
+        
+        let resultString = resultString.lowercased()
+        
+        if(resultString == "back"){
+            self.backButton(self)
+        }
+     
+    }
+    
+    func recordAndRecognizeSpeech(){
+        
+        if(voiceBtnClicked == false ) {
+            print("restarting")
+            self.recognitionTask?.cancel();
+            self.audioEngine.inputNode.removeTap(onBus: 0)
+            //self.voiceStartBtn.isEnabled = true
+            voiceBtnClicked = true
+            self.errorDiv.text = "Click Voice One More Time!"
+            //recordAndRecognizeSpeech()
+        } else {
+            print("starting")
+            self.errorDiv.text = "Voice Recording On!";
+            voiceBtnClicked = false;
+            
+            // this syntax differs slightly as i cant seem to use the else/ gaurd
+            let node = audioEngine.inputNode;
+            
+            print("we made a node")
+            
+            let recordingFormat = node.outputFormat(forBus: 0)
+            
+            node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) {buffer, _ in self.request.append(buffer)}
+            
+            audioEngine.prepare()
+            do {
+                try audioEngine.start()
+            } catch {
+                print("audio engine didnt work")
+                return print(error)
+            }
+            
+            guard let myRecognizer = SFSpeechRecognizer() else {
+                print("sf speech recognizer didnt work")
+                return
+            }
+            
+            if !myRecognizer.isAvailable {
+                print("available didnt work")
+                return
+            }
+            
+            
+            recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
+                if let result = result{
+                    
+                    var bestString = result.bestTranscription.formattedString
+                    
+                    var lastString: String = ""
+                    
+                    for segment in result.bestTranscription.segments {
+                        let indexTo = bestString.index(bestString.startIndex, offsetBy: segment.substringRange.location)
+                        lastString = bestString.substring(from: indexTo)
+                    }
+                    
+                    self.checkForCommandsSaid(resultString: lastString)
+                    
+                    if(lastString.lowercased() == "finish"){
+                        self.categoryText.text = ""
+                        self.recognitionTask?.cancel();
+                        self.audioEngine.inputNode.removeTap(onBus: 0)
+                        self.voiceStartBtn.isEnabled = true
+                        //self.colorDisplay.backgroundColor =  UIColor.white
+                        //var image: UIImage? = nil
+                        //self.darcyView.image = image
+                        self.errorDiv.text = "Cancelled Voice Recording"
+                        return;
+                        
+                        
+                    } else {
+                        self.categoryText.text = lastString
+                    }
+                    
+                    
+                }else if let error = error{
+                    print("the speech is not detected")
+                    print(error)
+                }
+                
+                
+                
+            })
+            
+        }
+        
+    }
     
     @IBAction func backButton(_ sender: Any) {
      //performSegue(withIdentifier: "categoriesSegue", sender: self)

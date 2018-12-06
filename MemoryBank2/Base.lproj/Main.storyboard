@@ -106,6 +106,13 @@
                                     <action selector="addCategory2:" destination="9pv-A4-QxB" eventType="touchUpInside" id="cdl-jx-FA4"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="No Errors" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnf-Qt-mg8">
+                                <rect key="frame" x="81" y="497" width="232" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="1" green="0.054688114840000003" blue="0.04883308628" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -113,6 +120,7 @@
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="categoryText" destination="Xpu-Jb-Wnh" id="4xf-iB-MdS"/>
+                        <outlet property="errorDiv" destination="lnf-Qt-mg8" id="qHo-uy-Pah"/>
                         <outlet property="tabelView" destination="KWR-hB-0uT" id="qHT-7m-7Dt"/>
                         <outlet property="userLabel" destination="PCN-8G-e66" id="ONd-HA-tor"/>
                         <outlet property="voiceStartBtn" destination="dA6-jN-mnt" id="qK8-MZ-oou"/>
@@ -185,7 +193,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33U-A9-vjP">
-                                <rect key="frame" x="163" y="534" width="57" height="39"/>
+                                <rect key="frame" x="159" y="575" width="57" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="BACK"/>
@@ -209,6 +217,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZe-pO-L17">
+                                <rect key="frame" x="168" y="537" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Voice"/>
+                                <connections>
+                                    <action selector="startVoice:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wAo-P6-whV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qa9-QM-oFH">
+                                <rect key="frame" x="87" y="445" width="230" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="1" green="0.054688114840000003" blue="0.04883308628" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFE-aW-n59">
+                                <rect key="frame" x="87" y="483" width="230" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
@@ -217,6 +247,9 @@
                     <connections>
                         <outlet property="DetailsContextLarger" destination="r2E-Jq-9kL" id="VSG-kT-zTD"/>
                         <outlet property="DetailsTitle" destination="zEq-FU-wV5" id="CNn-qq-mHg"/>
+                        <outlet property="categoryText" destination="EFE-aW-n59" id="MTZ-mt-ECo"/>
+                        <outlet property="errorDiv" destination="qa9-QM-oFH" id="Cz1-80-HuE"/>
+                        <outlet property="voiceStartBtn" destination="gZe-pO-L17" id="pR0-Xs-rTw"/>
                         <segue destination="9pv-A4-QxB" kind="presentation" identifier="categoriesSegue" id="oi7-gh-ykC"/>
                     </connections>
                 </viewController>
@@ -266,16 +299,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ygR-Qh-VqW">
-                                <rect key="frame" x="106" y="271" width="163" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-Sm-Odv">
                                 <rect key="frame" x="75" y="80" width="225" height="30"/>
                                 <color key="textColor" red="1" green="0.054688114842856073" blue="0.048833086276768745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ygR-Qh-VqW">
+                                <rect key="frame" x="106" y="311" width="163" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -326,6 +359,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oi7-gh-ykC"/>
+        <segue reference="QiW-0K-q6T"/>
     </inferredMetricsTieBreakers>
 </document>
