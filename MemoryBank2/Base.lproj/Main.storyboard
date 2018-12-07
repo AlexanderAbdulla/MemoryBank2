@@ -266,16 +266,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJ6-Ry-1Ht">
-                                <rect key="frame" x="138" y="434" width="99" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Log In"/>
-                                <connections>
-                                    <action selector="LogIn:" destination="vsA-BM-MHF" eventType="touchUpInside" id="3xv-6Y-BgV"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iem-QG-8WQ">
-                                <rect key="frame" x="138" y="355" width="99" height="56"/>
+                                <rect key="frame" x="64" y="366" width="122" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
@@ -312,30 +304,38 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJ6-Ry-1Ht">
+                                <rect key="frame" x="194" y="375" width="138" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="LogIn:" destination="vsA-BM-MHF" eventType="touchUpInside" id="3xv-6Y-BgV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8RC-fE-ARZ" firstAttribute="top" secondItem="4Rv-F5-dsn" secondAttribute="bottom" constant="8" id="4w3-Yd-Osf"/>
                             <constraint firstItem="Rx3-ps-Wai" firstAttribute="trailing" secondItem="8RC-fE-ARZ" secondAttribute="trailing" constant="106" id="9RM-2U-RxV"/>
-                            <constraint firstItem="YJ6-Ry-1Ht" firstAttribute="top" secondItem="iem-QG-8WQ" secondAttribute="bottom" constant="35" id="DBr-dp-Tcq"/>
                             <constraint firstItem="cbz-nI-LJy" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="106" id="EvL-K5-FOt"/>
                             <constraint firstItem="9Ve-Sm-Odv" firstAttribute="top" secondItem="Rx3-ps-Wai" secondAttribute="top" constant="62" id="He3-bn-dZO"/>
+                            <constraint firstItem="iem-QG-8WQ" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="126" id="Pcf-cx-Sf1"/>
                             <constraint firstItem="iem-QG-8WQ" firstAttribute="top" secondItem="ygR-Qh-VqW" secondAttribute="bottom" constant="23" id="SQq-ps-fYC"/>
                             <constraint firstItem="iem-QG-8WQ" firstAttribute="top" secondItem="Rx3-ps-Wai" secondAttribute="top" constant="304" id="bLZ-jr-a92"/>
                             <constraint firstItem="YJ6-Ry-1Ht" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="138" id="bVS-WX-oVy"/>
                             <constraint firstItem="ygR-Qh-VqW" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="106" id="cUO-dT-mGH"/>
+                            <constraint firstItem="YJ6-Ry-1Ht" firstAttribute="top" secondItem="ygR-Qh-VqW" secondAttribute="bottom" constant="34" id="e2n-C6-lMz"/>
                             <constraint firstItem="Rx3-ps-Wai" firstAttribute="trailing" secondItem="YJ6-Ry-1Ht" secondAttribute="trailing" constant="138" id="ePB-Oa-NLd"/>
                             <constraint firstItem="cbz-nI-LJy" firstAttribute="top" secondItem="Rx3-ps-Wai" secondAttribute="top" constant="113" id="eRl-8C-9GK"/>
                             <constraint firstItem="Rx3-ps-Wai" firstAttribute="trailing" secondItem="4Rv-F5-dsn" secondAttribute="trailing" constant="106" id="etU-1f-pMb"/>
                             <constraint firstItem="8RC-fE-ARZ" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="106" id="hVN-tn-iC6"/>
                             <constraint firstItem="ygR-Qh-VqW" firstAttribute="top" secondItem="8RC-fE-ARZ" secondAttribute="bottom" constant="8" id="kEj-3B-fJF"/>
-                            <constraint firstItem="iem-QG-8WQ" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="149" id="kYS-m6-zcc"/>
                             <constraint firstItem="cbz-nI-LJy" firstAttribute="top" secondItem="9Ve-Sm-Odv" secondAttribute="bottom" constant="21" id="muA-0F-coh"/>
                             <constraint firstItem="Rx3-ps-Wai" firstAttribute="bottom" secondItem="YJ6-Ry-1Ht" secondAttribute="bottom" constant="214" id="nBj-2y-XRD"/>
                             <constraint firstItem="Rx3-ps-Wai" firstAttribute="trailing" secondItem="9Ve-Sm-Odv" secondAttribute="trailing" constant="106" id="nWK-pe-ZxA"/>
                             <constraint firstItem="4Rv-F5-dsn" firstAttribute="top" secondItem="cbz-nI-LJy" secondAttribute="bottom" constant="7" id="piL-Tn-6H2"/>
-                            <constraint firstItem="Rx3-ps-Wai" firstAttribute="trailing" secondItem="iem-QG-8WQ" secondAttribute="trailing" constant="150" id="qmM-NC-k9D"/>
                             <constraint firstItem="Rx3-ps-Wai" firstAttribute="trailing" secondItem="cbz-nI-LJy" secondAttribute="trailing" constant="106" id="svU-nh-dTf"/>
+                            <constraint firstItem="Rx3-ps-Wai" firstAttribute="bottom" secondItem="iem-QG-8WQ" secondAttribute="bottom" constant="245" id="sz7-b1-eB7"/>
                             <constraint firstItem="9Ve-Sm-Odv" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="106" id="t4k-Bj-bQC"/>
                             <constraint firstItem="Rx3-ps-Wai" firstAttribute="trailing" secondItem="ygR-Qh-VqW" secondAttribute="trailing" constant="106" id="tfG-PH-hhi"/>
                             <constraint firstItem="4Rv-F5-dsn" firstAttribute="leading" secondItem="Rx3-ps-Wai" secondAttribute="leading" constant="106" id="xB6-ua-duD"/>
